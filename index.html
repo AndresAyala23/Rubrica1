@@ -23,6 +23,13 @@
             padding: 20px;
         }
 
+        #buscador {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
         .producto {
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -46,9 +53,10 @@
 <body>
     <header>
         <h1>Tienda de Artículos Deportivos</h1>
+        <input type="text" id="buscador" placeholder="Buscar productos">
     </header>
 
-    <section>
+    <section id="productos">
         <div class="producto">
             <h2>NIKE para Correr</h2>
             <p>Los mejores nike para correr. Disponibles en varios colores y tallas.</p>
@@ -75,6 +83,22 @@
     <footer>
         <p>&copy; 2024 Tienda de Artículos Deportivos</p>
     </footer>
+
+    <script>
+        document.getElementById('buscador').addEventListener('input', function() {
+            var input = this.value.toLowerCase();
+            var productos = document.querySelectorAll('.producto');
+
+            productos.forEach(function(producto) {
+                var textoProducto = producto.textContent.toLowerCase();
+                if (textoProducto.includes(input)) {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
